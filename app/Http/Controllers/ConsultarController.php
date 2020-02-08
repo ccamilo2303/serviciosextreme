@@ -3,7 +3,6 @@
 namespace App\Http\Controllers;
 use App\consultar;
 use Illuminate\Http\Request;
-
 class ConsultarController extends Controller
 {
     /**
@@ -13,11 +12,8 @@ class ConsultarController extends Controller
      */
     public function index()
     {
-        $movie = consultar::
-        join('descriptions', 'movies.id_Movies','=','descriptions.id_Description_Movie')
-            ->select( 'id_Movies', 'name_Movie', 'description', 'duration', 'image')->
-        get();
-        return $movie;
+        return consultar::orderBy ('release_Date', 'desc')->
+        select("name_Movie","id_Tmdb","url_Trailer")->get();
 
     }
 

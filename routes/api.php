@@ -17,9 +17,12 @@ use Illuminate\Http\Request;
     return $request->user();
 });*/
 
+
 Route::group(['middleware' => ['cors']], function () {
-    Route::apiResource('/consultar', 'ConsultarController');
+    Route::get('/consultar', 'ConsultarController@index');
     Route::get('/trailer/{idtrailer}', 'TrailerController@index');
     Route::get('/pelicula/{idpelicula}', 'PeliculaController@index');
+    Route::get('/consulta', 'ConsultaController@index');
 });
+
 

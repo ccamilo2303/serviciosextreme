@@ -15,7 +15,7 @@ class TrailerController extends Controller
     public function index($idtrailer)
     {
         $urlTrailer = trailer::
-            where('id_Movies', '=', $idtrailer)->
+            where('id_Tmdb', '=', $idtrailer)->
             select("url_Trailer")->get();
         return $urlTrailer;
     }

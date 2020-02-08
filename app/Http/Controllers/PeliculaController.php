@@ -15,7 +15,7 @@ class PeliculaController extends Controller
     public function index($idpelicula)
     {
         $urlMovie = pelicula::
-            where('id_Movies', '=', $idpelicula)->
+            where('id_Tmdb', '=', $idpelicula)->
             select("url_Movie")->get();
         return $urlMovie;
     }
