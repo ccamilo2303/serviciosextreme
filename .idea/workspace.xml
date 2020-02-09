@@ -3,15 +3,14 @@
   <component name="ChangeListManager">
     <list default="true" id="c5a18561-3d51-4e1f-8d6f-750f887d7bcb" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ConsultarController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ConsultarController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EnviarEmail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ConsultaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ConsultaController.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ConsultarController.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PeliculaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PeliculaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/TrailerController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/TrailerController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Middleware/Cors.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Middleware/Cors.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/consultar.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/factories/ConsultarFactory.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_19_162454_create_consultars_table.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/database/seeds/ConsultarSeeder.php" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/server.php" beforeDir="false" afterPath="$PROJECT_DIR$/server.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -170,7 +169,7 @@
       <workItem from="1580060715278" duration="5490000" />
       <workItem from="1581037448957" duration="3757000" />
       <workItem from="1581111057146" duration="3712000" />
-      <workItem from="1581176692841" duration="20810000" />
+      <workItem from="1581176692841" duration="25384000" />
     </task>
     <servers />
   </component>
@@ -182,10 +181,10 @@
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
     <state x="-878" y="68" key="#com.intellij.ide.util.MemberChooser/0.0.1366.728/-1366.0.1366.768@-1366.0.1366.768" timestamp="1581200720662" />
-    <state x="-953" y="138" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1581038038675">
+    <state x="-953" y="138" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog" timestamp="1581210273825">
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
-    <state x="-953" y="138" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/-1366.0.1366.768@-1366.0.1366.768" timestamp="1581038038675" />
+    <state x="-953" y="138" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/-1366.0.1366.768@-1366.0.1366.768" timestamp="1581210273817" />
     <state x="-870" y="197" key="NewPhpClassDialog" timestamp="1581196309532">
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
