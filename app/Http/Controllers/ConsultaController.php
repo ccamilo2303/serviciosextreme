@@ -1,6 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
+use App\Genre;
 use App\Insertar;
 use App\Consulta;
 use Illuminate\Http\Request;
@@ -22,6 +23,9 @@ class ConsultaController extends Controller
             foreach ($datos as $obj ){
                 $json = json_decode(file_get_contents('https://api.themoviedb.org/3/movie/'.$obj ->id_Tmdb.'?language=es-ES&api_key=e38bdcb99eda95bae467ac8f3dd8684f'), true);
                 Insertar:: insert(['fk_id_Tmdb' => $obj ->id_Tmdb, 'url_Img' => $json['poster_path'], 'description_Movie' => $json['overview'], 'duracion' => $json['runtime'], 'vote_average' => $json['vote_average'], 'vote_count' => $json['vote_count']]);
+                foreach ($json['genres'] as $id){
+                    Genre::insert(['Movie_Tmdb'=>$obj ->id_Tmdb, 'Movie_gender'=> $id['id']]);
+                }
             }
             $peliculas = Consulta::leftJoin('descriptions', 'movies.id_Tmdb', '=', 'descriptions.fk_id_Tmdb')
                     ->select('movies.name_Movie', 'movies.id_Tmdb', 'descriptions.url_Img', 'descriptions.duracion','descriptions.vote_average','descriptions.vote_count')
@@ -46,7 +50,10 @@ class ConsultaController extends Controller
      */
     public function store(Request $request)
     {
-        //
+
+
+
+
     }
 
     /**

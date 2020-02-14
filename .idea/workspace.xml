@@ -2,15 +2,13 @@
 <project version="4">
   <component name="ChangeListManager">
     <list default="true" id="c5a18561-3d51-4e1f-8d6f-750f887d7bcb" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.env.example" beforeDir="false" afterPath="$PROJECT_DIR$/.env.example" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ConsultaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/ConsultaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/ConsultarController.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/PeliculaController.php" beforeDir="false" afterPath="$PROJECT_DIR$/app/Http/Controllers/PeliculaController.php" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/app/consultar.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/factories/ConsultarFactory.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/migrations/2020_01_19_162454_create_consultars_table.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/database/seeds/ConsultarSeeder.php" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/routes/api.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/api.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Http/Controllers/EnviarEmail.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/app/Mail/EnviarCorreo.php" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/config/mail.php" beforeDir="false" afterPath="$PROJECT_DIR$/config/mail.php" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/routes/web.php" beforeDir="false" afterPath="$PROJECT_DIR$/routes/web.php" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -127,10 +125,11 @@
   <component name="PropertiesComponent">
     <property name="RunOnceActivity.ShowReadmeOnStart" value="true" />
     <property name="WebServerToolWindowFactoryState" value="false" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/app" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/resources/views/email" />
   </component>
   <component name="RecentsManager">
     <key name="CopyFile.RECENT_KEYS">
+      <recent name="D:\Andres\servicioscinextreme\resources\views\email" />
       <recent name="D:\Andres\servicioscinextreme\app" />
     </key>
   </component>
@@ -169,7 +168,10 @@
       <workItem from="1580060715278" duration="5490000" />
       <workItem from="1581037448957" duration="3757000" />
       <workItem from="1581111057146" duration="3712000" />
-      <workItem from="1581176692841" duration="25384000" />
+      <workItem from="1581176692841" duration="26045000" />
+      <workItem from="1581371319495" duration="13520000" />
+      <workItem from="1581468376329" duration="1752000" />
+      <workItem from="1581638496918" duration="6811000" />
     </task>
     <servers />
   </component>
@@ -185,19 +187,19 @@
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
     <state x="-953" y="138" key="#com.jetbrains.php.actions.copyPaste.importReferences.PhpImportReferencesDialog/0.0.1366.728/-1366.0.1366.768@-1366.0.1366.768" timestamp="1581210273817" />
-    <state x="-870" y="197" key="NewPhpClassDialog" timestamp="1581196309532">
+    <state x="-870" y="197" key="NewPhpClassDialog" timestamp="1581644731608">
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
-    <state x="-870" y="197" key="NewPhpClassDialog/0.0.1366.728/-1366.0.1366.768@-1366.0.1366.768" timestamp="1581196309532" />
+    <state x="-870" y="197" key="NewPhpClassDialog/0.0.1366.728/-1366.0.1366.768@-1366.0.1366.768" timestamp="1581644731608" />
     <state x="-848" y="306" key="NewPhpFileDialog" timestamp="1581196206156">
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
     <state x="-848" y="306" key="NewPhpFileDialog/0.0.1366.728/-1366.0.1366.768@-1366.0.1366.768" timestamp="1581196206156" />
-    <state x="378" y="195" key="com.intellij.ide.util.TipDialog" timestamp="1581176701004">
+    <state x="378" y="195" key="com.intellij.ide.util.TipDialog" timestamp="1581638507562">
       <screen x="0" y="0" width="1366" height="728" />
     </state>
-    <state x="-988" y="206" key="com.intellij.ide.util.TipDialog/0.0.1366.728/-1366.0.1366.768@-1366.0.1366.768" timestamp="1581111056611" />
-    <state x="378" y="195" key="com.intellij.ide.util.TipDialog/0.0.1366.728/-1366.0.1366.768@0.0.1366.728" timestamp="1581176701004" />
+    <state x="-988" y="206" key="com.intellij.ide.util.TipDialog/0.0.1366.728/-1366.0.1366.768@-1366.0.1366.768" timestamp="1581468552956" />
+    <state x="378" y="195" key="com.intellij.ide.util.TipDialog/0.0.1366.728/-1366.0.1366.768@0.0.1366.728" timestamp="1581638507562" />
     <state x="-1366" y="0" width="606" height="768" key="find.popup" timestamp="1581191414966">
       <screen x="-1366" y="0" width="1366" height="768" />
     </state>
