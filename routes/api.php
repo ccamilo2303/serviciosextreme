@@ -24,6 +24,8 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('/consulta', 'ConsultaController@index');
     Route::get('/consulta-genero/{genre}', 'ConsultaGeneroController@index');
     Route::get('/lista-generos', 'ListaGenerosController@index');
+    Route::get('/validar-codigo', 'ValidarCodigoController@index');
+    Route::get('/validarcodigo/{code}', 'ValidarCodigoController@store');
 });
 
 
