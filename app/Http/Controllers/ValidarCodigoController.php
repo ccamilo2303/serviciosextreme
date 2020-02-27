@@ -29,7 +29,6 @@ class ValidarCodigoController extends Controller
             }   
             else{
                 if($validacion[0]->email == null){
-                    echo 'entrooo';
                     $up = ValidarCodigo::where('code','=', $request['code'])
                     ->update(['email' => $request['email']]);
                     $s = array(

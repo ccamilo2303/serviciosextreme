@@ -20,5 +20,8 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('/lista-generos', 'ListaGenerosController@index');
     Route::get('/validar-codigo', 'ValidarCodigoController@index');
     Route::get('/validarcodigo/{code}', 'ValidarCodigoController@store');
+    Route::get('/suscripcion', 'SuscripcionController@index');
+    Route::get('/suscripcion-ac', 'SuscripcionController@store');
+    Route::get('/responsepayu', 'SuscripcionController@responsepayu');
 });
 
