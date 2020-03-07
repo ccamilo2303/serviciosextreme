@@ -28,7 +28,7 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('/validarcodigo/{code}', 'ValidarCodigoController@store');
     Route::get('/suscripcion', 'SuscripcionController@index');
     Route::get('/suscripcion-ac', 'SuscripcionController@store');
-    Route::get('/responsepayu', 'SuscripcionController@responsepayu');
+    Route::post('/responsepayu', 'SuscripcionController@responsepayu');
 });
 
 

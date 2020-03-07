@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Suscripcion;
+use App\Log;
 use Illuminate\Http\Request;
 Use Exception;
 
@@ -63,6 +64,7 @@ class SuscripcionController extends Controller
 
     public function responsepayu(Request $request)
     {
+        Log::insert(['id_Transaccion' =>$request['referenceCode'], 'fecha_Creacion' => now()]);
         if ($request['transactionState'] == 4) {
             $day = Suscripcion::where('id_Pago', '=', $request['reference_pol'])->select('dias_Suscripcion')->get();
             $upUser = Suscripcion::where('id_Pago', '=', $request['reference_pol'])
