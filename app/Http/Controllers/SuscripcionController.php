@@ -18,13 +18,26 @@ class SuscripcionController extends Controller
     public function index(Request $request)
     {
         try{
-            $ingresoUsuario = Suscripcion::
-            insert(['email'=>$request['email'], 'id_Pago'=>$request['id_Pago'], 'dias_Suscripcion'=>$request['dias_Suscripcion']]);
-            $s = array(
-                'error' => false,
-                'mensaje' => 'Se ha insertado con éxtio.'
-            );
-            return $s;
+            $user = Suscripcion:: where('email', '=', $request['email'])->select('email')->get();
+            if (count($user) == 0) {
+                Suscripcion::insert(['email'=>$request['email'],
+                'id_Pago'=>$request['id_Pago'], 'dias_Suscripcion'=>$request['dias_Suscripcion']]);
+                $s = array(
+                    'error' => false,
+                    'mensaje' => 'Se ha insertado con éxtio.'
+                );
+                return $s;
+            }else {
+                Suscripcion::where('email', '=', $request['email'])
+                ->update(['email'=>$request['email'],
+                'id_Pago'=>$request['id_Pago'], 'dias_Suscripcion'=>$request['dias_Suscripcion'], 'active' => 0, 'start_Subcription_Date'=>null, 'end_Subcription_Date'=>null, 'id_Transaccion'=>null, 'updated_at'=>null]);
+                $s = array(
+                    'error' => false,
+                    'mensaje' => 'Se ha actualizado la cuenta con éxtio.'
+                );
+                return $s;
+            }
+           
         }catch(Exception $e){
             echo $e->getMessage();
         }
@@ -70,6 +83,43 @@ class SuscripcionController extends Controller
             $upUser = Suscripcion::where('id_Pago', '=', $request['reference_pol'])
             ->update(['id_Transaccion' => $request['referenceCode'], 'active' => 1, 'start_Subcription_Date' => now(), 'end_Subcription_Date' => 
             now()->modify('+'.$day[0]->dias_Suscripcion.' days')]);
+        }
+    }
+
+     /**
+     * valsuscripcion a newly created resource in storage.
+     *
+     * @param  \Illuminate\Http\Request  $request
+     * @return \Illuminate\Http\Response
+     */
+
+    public function valsuscripcion(Request $request)
+    {
+        
+        $fecha = Suscripcion::where('email', '=', $request['email'])
+        ->select('end_Subcription_Date', 'active')->get();
+        if ($fecha[0]->active == 0){
+            $s = array(
+                'error' => true,
+                'mensaje' => 'Su cuenta está inactiva, lo invitamos a renovar su suscripción.'
+            );
+            return $s;
+        }else {
+            if ( now() <= $fecha[0]->end_Subcription_Date) {
+                $s = array(
+                    'error' => false,
+                    'mensaje' => 'Cuenta activa.'
+                );
+                return $s;
+            }else{
+                Suscripcion::where('email', '=', $request['email'])
+                ->update(['active' => 0]);
+                $s = array(
+                    'error' => false,
+                    'mensaje' => 'Se actualizo el estado de la cuenta a Inactivo.'
+                );
+                return $s;
+            }
         }
     }
 
