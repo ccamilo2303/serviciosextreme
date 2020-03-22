@@ -22,7 +22,7 @@ class ConsultaController extends Controller
             ->select('movies.id_Tmdb')->get();
             foreach ($datos as $obj ){
                 $json = json_decode(file_get_contents('https://api.themoviedb.org/3/movie/'.$obj ->id_Tmdb.'?language=es-ES&api_key=e38bdcb99eda95bae467ac8f3dd8684f'), true);
-                Insertar:: insert(['fk_id_Tmdb' => $obj ->id_Tmdb, 'url_Img' => $json['poster_path'], 'description_Movie' => $json['overview'], 'duracion' => $json['runtime'], 'vote_average' => $json['vote_average'], 'vote_count' => $json['vote_count']]);
+                Insertar:: insert(['fk_id_Tmdb' => $obj ->id_Tmdb, 'description_Movie' => $json['overview'], 'duracion' => $json['runtime'], 'vote_average' => $json['vote_average'], 'vote_count' => $json['vote_count']]);
                 foreach ($json['genres'] as $id){
                     Genre::insert(['Movie_Tmdb'=>$obj ->id_Tmdb, 'Movie_gender'=> $id['id']]);
                 }
@@ -30,7 +30,7 @@ class ConsultaController extends Controller
             $peliculas = Consulta::leftJoin('descriptions', 'movies.id_Tmdb', '=', 'descriptions.fk_id_Tmdb')
                     ->select('movies.name_Movie', 'movies.id_Tmdb', 'descriptions.url_Img', 'descriptions.duracion','descriptions.vote_average','descriptions.vote_count')
                     ->orderBy('movies.release_Date','desc')
-                    ->get();
+                    ->paginate(12);
                 return $peliculas;
             }
             catch(Exception $e){
