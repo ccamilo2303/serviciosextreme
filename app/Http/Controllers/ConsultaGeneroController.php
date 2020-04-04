@@ -19,7 +19,7 @@ class ConsultaGeneroController extends Controller
             ->leftJoin('movies_and_genders', 'movies.id_Tmdb', '=', 'movies_and_genders.Movie_Tmdb')
             ->select('movies.name_Movie', 'movies.id_Tmdb', 'descriptions.url_Img', 'descriptions.duracion','descriptions.vote_average','descriptions.vote_count')
             ->orderBy('movies.release_Date','desc')
-            ->get();
+            ->paginate(12);
         return $obj;
     }
 

@@ -28,7 +28,7 @@ class ConsultaController extends Controller
                 }
             }
             $peliculas = Consulta::leftJoin('descriptions', 'movies.id_Tmdb', '=', 'descriptions.fk_id_Tmdb')
-                    ->select('movies.name_Movie', 'movies.id_Tmdb', 'descriptions.url_Img', 'descriptions.duracion','descriptions.vote_average','descriptions.vote_count')
+                    ->select('movies.name_Movie', 'movies.id_Tmdb', 'descriptions.url_Img', 'descriptions.duracion','descriptions.vote_average','descriptions.vote_count','url_Trailer')
                     ->orderBy('movies.release_Date','desc')
                     ->paginate(12);
                 return $peliculas;
