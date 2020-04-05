@@ -20,6 +20,7 @@ class ListaGenerosController extends Controller
             ->orderBy('name_gender','asc')
             ->get();
         return $lista;
+        echo "puto";
     }
 
 
