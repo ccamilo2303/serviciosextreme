@@ -24,5 +24,6 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('/suscripcion-ac', 'SuscripcionController@store');
     Route::post('/responsepayu', 'SuscripcionController@responsepayu');
     Route::get('/valsuscripcion', 'SuscripcionController@valsuscripcion');
+    Route::get('/search/{query}', 'SearchController@index');
 });
 

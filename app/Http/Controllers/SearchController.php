@@ -2,24 +2,24 @@
 
 namespace App\Http\Controllers;
 
-use App\ListaGeneros;
+use App\search;
 use Illuminate\Http\Request;
 
-class ListaGenerosController extends Controller
+class SearchController extends Controller
 {
     /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($query)
     {
-        $lista = ListaGeneros::join('movies_and_genders','genders.id_gender','=','movies_and_genders.Movie_gender')
-            ->select('id_gender','name_gender')
-            ->groupBy('id_gender','name_gender')
-            ->orderBy('name_gender','asc')
-            ->get();
-        return $lista;
+        $query_Movie = search::where('name_Movie','like','%'.$query.'%')
+                    ->leftJoin('descriptions', 'movies.id_Tmdb', '=', 'descriptions.fk_id_Tmdb')
+                    ->select('movies.name_Movie', 'movies.id_Tmdb', 'descriptions.url_Img', 'descriptions.duracion','descriptions.vote_average','descriptions.vote_count','url_Trailer')
+                    ->orderBy('movies.release_Date','desc')
+                    ->paginate(12);
+                return $query_Movie;
     }
 
 
@@ -37,10 +37,10 @@ class ListaGenerosController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\ListaGeneros  $listaGeneros
+     * @param  \App\search  $search
      * @return \Illuminate\Http\Response
      */
-    public function show(ListaGeneros $listaGeneros)
+    public function show(search $search)
     {
         //
     }
@@ -50,10 +50,10 @@ class ListaGenerosController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\ListaGeneros  $listaGeneros
+     * @param  \App\search  $search
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, ListaGeneros $listaGeneros)
+    public function update(Request $request, search $search)
     {
         //
     }
@@ -61,10 +61,10 @@ class ListaGenerosController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\ListaGeneros  $listaGeneros
+     * @param  \App\search  $search
      * @return \Illuminate\Http\Response
      */
-    public function destroy(ListaGeneros $listaGeneros)
+    public function destroy(search $search)
     {
         //
     }

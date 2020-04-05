@@ -14,10 +14,9 @@ class ConsultaGeneroController extends Controller
      */
     public function index($genre)
     {
-        $obj = ConsultaGenero::where('Movie_gender','=',$genre)
+        $obj = ConsultaGenero::where('name_Movie','=',$genre)
             ->leftJoin('descriptions', 'movies.id_Tmdb', '=', 'descriptions.fk_id_Tmdb')
-            ->leftJoin('movies_and_genders', 'movies.id_Tmdb', '=', 'movies_and_genders.Movie_Tmdb')
-            ->select('movies.name_Movie', 'movies.id_Tmdb', 'descriptions.url_Img', 'descriptions.duracion','descriptions.vote_average','descriptions.vote_count')
+            ->select('movies.name_Movie', 'movies.id_Tmdb', 'descriptions.url_Img', 'descriptions.duracion','descriptions.vote_average','descriptions.vote_count','movies.url_Trailer')
             ->orderBy('movies.release_Date','desc')
             ->paginate(12);
         return $obj;
