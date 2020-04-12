@@ -31,6 +31,11 @@ Route::group(['middleware' => ['cors']], function () {
     Route::post('/responsepayu', 'SuscripcionController@responsepayu');
     Route::get('/valsuscripcion', 'SuscripcionController@valsuscripcion');
     Route::get('/search/{query}', 'SearchController@index');
+    Route::get('/', function () {
+        return view('test');
+    }); //Esta ruta la ponemos en la raiz para que nada mas ejecutar nuestra aplicación aparezca nuestro formulario
+    
+    Route::post('/contactar', 'EmailController@contact')->name('contact');
 });
 
 
