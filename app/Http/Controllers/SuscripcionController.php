@@ -80,9 +80,12 @@ class SuscripcionController extends Controller
         Log::insert(['id_Transaccion' =>$request['referenceCode'], 'fecha_Creacion' => now()]);
         if ($request['transactionState'] == 4) {
             $day = Suscripcion::where('id_Pago', '=', $request['reference_pol'])->select('dias_Suscripcion')->get();
+            $email_User = Suscripcion::where('id_Pago', '=', $request['reference_pol'])->select('email')->get();
             $upUser = Suscripcion::where('id_Pago', '=', $request['reference_pol'])
             ->update(['id_Transaccion' => $request['referenceCode'], 'active' => 1, 'start_Subcription_Date' => now(), 'end_Subcription_Date' => 
             now()->modify('+'.$day[0]->dias_Suscripcion.' days')]);
+
+            EmailController::welcome($email_User);
         }
     }
 

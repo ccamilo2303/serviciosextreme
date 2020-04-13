@@ -22,7 +22,7 @@ class ConsultaController extends Controller
             ->select('movies.id_Tmdb')->get();
             foreach ($datos as $obj ){
                 $json = json_decode(file_get_contents('https://api.themoviedb.org/3/movie/'.$obj ->id_Tmdb.'?language=es-ES&api_key=e38bdcb99eda95bae467ac8f3dd8684f'), true);
-                Insertar:: insert(['fk_id_Tmdb' => $obj ->id_Tmdb, 'description_Movie' => $json['overview'], 'duracion' => $json['runtime'], 'vote_average' => $json['vote_average'], 'vote_count' => $json['vote_count']]);
+                Insertar:: insert(['fk_id_Tmdb' => $obj ->id_Tmdb,'url_Img' => 'http://www.cinextreme.co/resources/cartelera/'. $obj ->id_Tmdb.'/0.jpg', 'description_Movie' => $json['overview'], 'duracion' => $json['runtime'], 'vote_average' => $json['vote_average'], 'vote_count' => $json['vote_count']]);
                 foreach ($json['genres'] as $id){
                     Genre::insert(['Movie_Tmdb'=>$obj ->id_Tmdb, 'Movie_gender'=> $id['id']]);
                 }
