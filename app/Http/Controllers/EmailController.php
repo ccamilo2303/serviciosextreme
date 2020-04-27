@@ -33,9 +33,21 @@ class EmailController extends Controller
 
     public function resetPassword(Request $request){
         
-        $subject = "Bienvenido a Cinextreme";
+        $subject = "Restablecimiento de contraseña";
         $for = $request->resetPass;
-        Mail::send('emailWelcome',$request->all(), function($msj) use($subject,$for){
+        Mail::send('emailPasswordReset',$request->all(), function($msj) use($subject,$for){
+            $msj->from("cinextremecol@gmail.com","Cinextreme Col");
+            $msj->subject($subject);
+            $msj->to($for);
+        });
+        return redirect()->back(); 
+    }
+
+    public function movie(Request $request){
+        
+        $subject = "Solicitud de película";
+        $for = "cinextremecol@gmail.com";
+        Mail::send('movie',$request->all(), function($msj) use($subject,$for){
             $msj->from("cinextremecol@gmail.com","Cinextreme Col");
             $msj->subject($subject);
             $msj->to($for);

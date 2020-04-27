@@ -35,8 +35,10 @@ Route::group(['middleware' => ['cors']], function () {
         return view('test');
     }); //Esta ruta la ponemos en la raiz para que nada mas ejecutar nuestra aplicación aparezca nuestro formulario
     
-    Route::post('/contactar', 'EmailController@contact')->name('contact');
+    Route::get('/contactar', 'EmailController@contact')->name('contact');
     Route::post('/bienvenido', 'EmailController@welcome');
+    Route::post('/restablecer-password', 'EmailController@resetPassword');
+    Route::post('/pedir-pelicula', 'EmailController@movie');
 });
 
 

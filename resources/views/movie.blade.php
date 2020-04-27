@@ -351,7 +351,7 @@ a.es-button {
                   <td width="540" align="center" valign="top"> 
                    <table cellpadding="0" cellspacing="0" width="100%" style="background-position: left bottom;" role="presentation"> 
                      <tr> 
-                      <td align="center"><h1>Formulario de contacto</h1></td> 
+                      <td align="center"><h1>Solicitud de película</h1></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -366,16 +366,8 @@ a.es-button {
                      <tr> 
                       <td align="left"> 
                        <ul> 
-                        <li>Nombres: {{$name}}</li> 
-                       </ul>
-                       <ul> 
-                        <li>Apellidos: {{$last}}</li> 
-                       </ul>
-                       <ul> 
-                        <li>Email: {{$email}}</li> 
-                       </ul>
-                       <ul> 
-                        <li>Mensaje: {{$msg}}</li> 
+                        <li>Título de la película: {{$nameMovie}}</li> 
+                        <li>Descripción adicional: {{$description}}</li> 
                        </ul>
                     </td> 
                      </tr> 
@@ -389,6 +381,12 @@ a.es-button {
                  <tr> 
                   <td width="540" align="center" valign="top"> 
                    <table cellpadding="0" cellspacing="0" width="100%" role="presentation"> 
+                     <tr> 
+                      <td align="center"><h3 style="line-height: 150%;">Atentamente, Equipo Cinextreme</h3></td> 
+                     </tr> 
+                     <tr> 
+                      <td align="center"><h3 style="line-height: 18px; font-size: 12px;">Bogotá Colombia</h3></td> 
+                     </tr> 
                    </table></td> 
                  </tr> 
                </table></td> 
@@ -408,7 +406,13 @@ a.es-button {
                    <table width="100%" cellspacing="0" cellpadding="0" role="presentation"> 
                      <tr> 
                       <td class="es-m-txt-c" align="left" style="font-size:0"> 
-                      </td> 
+                       <table class="es-table-not-adapt es-social" cellspacing="0" cellpadding="0" role="presentation"> 
+                         <tr> 
+                          <td class="es-p10r" valign="top" align="center"><img title="Facebook" src="http://cinextreme.co/assets/images/facebook-circle-colored.png" alt="Fb" width="32" height="32"></img></td> 
+                          <td class="es-p10r" valign="top" align="center"><img title="Instagram" src="http://cinextreme.co/assets/images/instagram-circle-colored.png" alt="Inst" width="32" height="32"></img></td> 
+                          <td valign="top" align="center"><a target="_blank" href="https://cinextremecol@gmail.com"><img title="Email" src="http://cinextreme.co/assets/images/mail-circle-colored.png" alt="Email" width="32" height="32"></img></a></td> 
+                         </tr> 
+                       </table></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
