@@ -77,15 +77,22 @@ class SuscripcionController extends Controller
 
     public function responsepayu(Request $request)
     {
+
+        
         Log::insert(['id_Transaccion' =>$request['referenceCode'], 'fecha_Creacion' => now()]);
-        if ($request['transactionState'] == 4) {
-            $day = Suscripcion::where('id_Pago', '=', $request['reference_pol'])->select('dias_Suscripcion')->get();
-            $email_User = Suscripcion::where('id_Pago', '=', $request['reference_pol'])->select('email')->get();
-            $upUser = Suscripcion::where('id_Pago', '=', $request['reference_pol'])
-            ->update(['id_Transaccion' => $request['referenceCode'], 'active' => 1, 'start_Subcription_Date' => now(), 'end_Subcription_Date' => 
+        
+        try{
+            if ($request['state_pol'] == 4) {
+            $day = Suscripcion::where('id_Pago', '=', $request['reference_sale'])->select('dias_Suscripcion')->get();
+            $email_User = Suscripcion::where('id_Pago', '=', $request['reference_sale'])->select('email')->get();
+            $upUser = Suscripcion::where('id_Pago', '=', $request['reference_sale'])
+            ->update(['id_Transaccion' => $request['reference_pol'], 'active' => 1, 'start_Subcription_Date' => now(), 'end_Subcription_Date' => 
             now()->modify('+'.$day[0]->dias_Suscripcion.' days')]);
 
-            EmailController::welcome($email_User);
+            //EmailController::welcome($email_User);
+            }
+        }catch (Exception $e) {
+            echo 'Excepción capturada: ',  $e->getMessage(), "\n";
         }
     }
 

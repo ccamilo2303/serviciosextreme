@@ -19,6 +19,7 @@ class VerifyCsrfToken extends Middleware
      * @var array
      */
     protected $except = [
-        //
+        //'stripe/*',
+        //'http://cinextreme.co/public/responsepayu?*'
     ];
 }
