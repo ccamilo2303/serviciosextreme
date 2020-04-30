@@ -8,51 +8,68 @@ use Mail; //Importante incluir la clase Mail, que será la encargada del envío
 class EmailController extends Controller
 {
   
-    public function contact(Request $request){
+    public function contact($request){
+
+        $info = json_decode($request, true);
+
         $subject = "Nos contactaron!";
         $for = "cinextremecol@gmail.com";
-        Mail::send('emailFormContact',$request->all(), function($msj) use($subject,$for){
+        Mail::send('emailFormContact',$info, function($msj) use($subject,$for){
             $msj->from("cinextremecol@gmail.com","Cinextreme Col");
             $msj->subject($subject);
             $msj->to($for);
         });
-        return redirect()->back();
+        return 'Ok';
     }
 
-    public function welcome(Request $request){
+    public function welcome($request){
         
+        $info = json_decode($request, true);
+
         $subject = "Bienvenido a Cinextreme";
-        $for = $request->email;
-        Mail::send('emailWelcome',$request->all(), function($msj) use($subject,$for){
+        $for = $info->email;
+        Mail::send('emailWelcome',$info, function($msj) use($subject,$for){
             $msj->from("cinextremecol@gmail.com","Cinextreme Col");
             $msj->subject($subject);
             $msj->to($for);
         });
-        return redirect()->back(); 
+        return "Ok"; 
     }
 
-    public function resetPassword(Request $request){
+    public function resetPassword($request){
         
+        $info = json_decode($request, true);
+
         $subject = "Restablecimiento de contraseña";
-        $for = $request->resetPass;
-        Mail::send('emailPasswordReset',$request->all(), function($msj) use($subject,$for){
+        $for = $info->resetPass;
+        Mail::send('emailPasswordReset',$info, function($msj) use($subject,$for){
             $msj->from("cinextremecol@gmail.com","Cinextreme Col");
             $msj->subject($subject);
             $msj->to($for);
         });
-        return redirect()->back(); 
+        return "Ok"; 
     }
 
-    public function movie(Request $request){
+  
+
+    public function movie($request){
         
+        $info = json_decode($request, true);
+
         $subject = "Solicitud de película";
         $for = "cinextremecol@gmail.com";
-        Mail::send('movie',$request->all(), function($msj) use($subject,$for){
+        Mail::send('movie',$info, function($msj) use($subject,$for){
             $msj->from("cinextremecol@gmail.com","Cinextreme Col");
             $msj->subject($subject);
             $msj->to($for);
         });
-        return redirect()->back(); 
+
+
+        return "Ok";
+        
+        
     }
+
+    
 
 }

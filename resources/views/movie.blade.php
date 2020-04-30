@@ -367,7 +367,8 @@ a.es-button {
                       <td align="left"> 
                        <ul> 
                         <li>Título de la película: {{$nameMovie}}</li> 
-                        <li>Descripción adicional: {{$description}}</li> 
+						<li>Descripción adicional: {{$description}}</li>
+						<li>Correo del usuario: {{$email}}</li> 
                        </ul>
                     </td> 
                      </tr> 

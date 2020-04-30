@@ -25,9 +25,9 @@ Route::group(['middleware' => ['cors']], function () {
     Route::post('/responsepayu', 'SuscripcionController@responsepayu');
     Route::get('/valsuscripcion', 'SuscripcionController@valsuscripcion');
     Route::get('/search/{query}', 'SearchController@index');
-    Route::get('/contactar', 'EmailController@contact')->name('contact');
-    Route::post('/restablecer-password', 'EmailController@resetPassword');
-    Route::post('/bienvenido', 'EmailController@welcome');
-    Route::post('/pedir-pelicula', 'EmailController@movie');
+    Route::get('/contactar/{infoContacto}', 'EmailController@contact');
+    Route::get('/restablecer-password/{infoResetPassword}', 'EmailController@resetPassword');
+    Route::get('/bienvenido/{infoBienvenida}', 'EmailController@welcome');
+    Route::get('/pedir-pelicula/{infoMovie}', 'EmailController@movie');
 });
 

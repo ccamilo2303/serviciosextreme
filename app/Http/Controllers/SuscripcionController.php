@@ -118,8 +118,8 @@ class SuscripcionController extends Controller
                 Suscripcion::where('email', '=', $request['email'])
                 ->update(['active' => 0]);
                 $s = array(
-                    'error' => false,
-                    'mensaje' => 'Se actualizo el estado de la cuenta a Inactivo.'
+                    'error' => true,
+                    'mensaje' => 'Su suscripción finalizo, lo invitamos a renovarla.'
                 );
                 return $s;
             }
