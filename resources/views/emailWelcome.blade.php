@@ -351,7 +351,7 @@ a.es-button {
                   <td width="540" align="center" valign="top"> 
                    <table cellpadding="0" cellspacing="0" width="100%" style="background-position: left bottom;" role="presentation"> 
                      <tr> 
-                      <td align="center"><h1>¡Bienvenido a Cinextreme!</h1></td> 
+                      <td align="center"><h1>¡Bienvenido!</h1></td> 
                      </tr> 
                    </table></td> 
                  </tr> 
@@ -366,8 +366,10 @@ a.es-button {
                      <tr> 
                       <td align="left"> 
                        <ul> 
-                        <li>Te damos la bienvenida y agradecemos tu suscripción a Cinextreme, tu cuenta está activa hasta el día x, si tienes dudas o presentas problemas, no dudes en contactarnos.</li> 
-                       </ul></td> 
+						<li>Te damos la bienvenida y agradecemos tu suscripción a Cinextreme, tu cuenta está activa hasta {{$fecha}}, si tienes dudas o presentas problemas, no dudes en contactarnos.</li> 
+						<li>Adquiriste el siguiente producto: <br> {{$descripcion}}</li> 
+					   </ul>
+					</td> 
                      </tr> 
                    </table></td> 
                  </tr> 

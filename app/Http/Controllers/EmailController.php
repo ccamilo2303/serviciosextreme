@@ -22,18 +22,18 @@ class EmailController extends Controller
         return 'Ok';
     }
 
-    public function welcome($request){
+    public static function welcome($request){
         
         $info = json_decode($request, true);
 
         $subject = "Bienvenido a Cinextreme";
-        $for = $info->email;
+        $for = $info['email'];
         Mail::send('emailWelcome',$info, function($msj) use($subject,$for){
             $msj->from("cinextremecol@gmail.com","Cinextreme Col");
             $msj->subject($subject);
             $msj->to($for);
         });
-        return "Ok"; 
+        return  'Ok'; 
     }
 
     public function resetPassword($request){
