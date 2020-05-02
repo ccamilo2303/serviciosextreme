@@ -17,6 +17,12 @@ class SuscripcionController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
+
+
+    SELECT * FROM `movies` WHERE `id_Tmdb` = '606978-intercambiadas'
+
+
+    
     public function index(Request $request)
     {
         try {
@@ -32,15 +38,29 @@ class SuscripcionController extends Controller
                 );
                 return $s;
             } else {
-                Suscripcion::where('email', '=', $request['email'])
-                    ->update([
-                        'email' => $request['email'],
-                        'id_Pago' => $request['id_Pago'], 'dias_Suscripcion' => $request['dias_Suscripcion'], 'active' => 0, 'start_Subcription_Date' => null, 'end_Subcription_Date' => null, 'id_Transaccion' => null, 'updated_at' => null
-                    ]);
-                $s = array(
-                    'error' => false,
-                    'mensaje' => 'Se ha actualizado la cuenta con éxtio.'
-                );
+
+                $valUser = Suscripcion::where('email', '=', $request['email'])->select('end_Subcription_Date')->get();
+                
+
+               
+                if ($valUser[0]->end_Subcription_Date < now()) {
+
+                    Suscripcion::where('email', '=', $request['email'])
+                        ->update([
+                            'email' => $request['email'],
+                            'id_Pago' => $request['id_Pago'], 'dias_Suscripcion' => $request['dias_Suscripcion'], 'active' => 0, 'start_Subcription_Date' => null, 'end_Subcription_Date' => null, 'id_Transaccion' => null, 'updated_at' => null
+                        ]);
+                    $s = array(
+                        'error' => false,
+                        'mensaje' => 'Se ha actualizado la cuenta con éxtio.'
+                    );
+                    return $s;
+                } else
+
+                    $s = array(
+                        'error' => true,
+                        'mensaje' => 'La cuenta tiene una suscripción activa.'
+                    );
                 return $s;
             }
         } catch (Exception $e) {
@@ -66,6 +86,34 @@ class SuscripcionController extends Controller
                 'error' => false,
                 'mensaje' => 'Ok.'
             );
+            return $s;
+        } catch (Exception $e) {
+            echo $e->getMessage();
+        }
+    }
+
+    public function store2(Request $request)
+    {
+        try {
+            $day = Suscripcion::where('id_Pago', '=', $request['id_Pago'])->select('dias_Suscripcion')->get();
+            $upUser = Suscripcion::where('id_Pago', '=', $request['id_Pago'])
+                ->update(['id_Transaccion' => $request['id_Transaccion'], 'active' => 1, 'start_Subcription_Date' => now(), 'end_Subcription_Date' =>
+                now()->modify('+' . $day[0]->dias_Suscripcion . ' days')]);
+
+            $infoArray = array(
+                '_token' => null,
+                'email' => $request['email'],
+                'nameUser' => $request['nombres'],
+            );
+            $info = json_encode($infoArray);
+
+            EmailController::welcomeDemo($info);
+
+            $s = array(
+                'error' => false,
+                'mensaje' => 'Ok.'
+            );
+
             return $s;
         } catch (Exception $e) {
             echo $e->getMessage();
