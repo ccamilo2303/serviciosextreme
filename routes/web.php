@@ -32,5 +32,7 @@ Route::group(['middleware' => ['cors']], function () {
     Route::get('/restablecer-password/{infoResetPassword}', 'EmailController@resetPassword');
     Route::get('/bienvenido/{infoBienvenida}', 'EmailController@welcome');
     Route::get('/pedir-pelicula/{infoMovie}', 'EmailController@movie');
+    Route::get('/actualizar-dias', 'SuscripcionController@actualizarDias');
+    Route::get('/solicitud-demo', 'CodigoDemostracionController@index');
 });
 

@@ -19,24 +19,38 @@ class SuscripcionController extends Controller
      */
 
 
-    SELECT * FROM `movies` WHERE `id_Tmdb` = '606978-intercambiadas'
-
-
     
     public function index(Request $request)
     {
         try {
             $user = Suscripcion::where('email', '=', $request['email'])->select('email')->get();
             if (count($user) == 0) {
-                Suscripcion::insert([
-                    'email' => $request['email'],
-                    'id_Pago' => $request['id_Pago'], 'dias_Suscripcion' => $request['dias_Suscripcion']
-                ]);
-                $s = array(
-                    'error' => false,
-                    'mensaje' => 'Se ha insertado con éxtio.'
-                );
-                return $s;
+
+                if($request['dias_Suscripcion'] == null){
+
+                    Suscripcion::insert([
+                        'email' => $request['email'],
+                        'id_Pago' => $request['id_Pago'], 'dias_Suscripcion' => 0
+                    ]);
+                    $s = array(
+                        'error' => false,
+                        'mensaje' => 'Se ha insertado con éxtio.'
+                    );
+                    return $s;
+
+                }else{
+
+                    Suscripcion::insert([
+                        'email' => $request['email'],
+                        'id_Pago' => $request['id_Pago'], 'dias_Suscripcion' => $request['dias_Suscripcion']
+                    ]);
+                    $s = array(
+                        'error' => false,
+                        'mensaje' => 'Se ha insertado con éxtio.'
+                    );
+                    return $s;
+                }
+                
             } else {
 
                 $valUser = Suscripcion::where('email', '=', $request['email'])->select('end_Subcription_Date')->get();
@@ -191,6 +205,34 @@ class SuscripcionController extends Controller
                 return $s;
             }
         }
+    }
+
+    public function actualizarDias(Request $request)
+    {
+
+        $validarUsuario = Suscripcion::where('id_pago', '=', $request['id_pago'])
+        ->select('id_Pago')->get();
+
+        if (count($validarUsuario) == 0) {
+            
+            $s = array(
+                'error' => true,
+                'mensaje' => 'El id de pago no existe.'
+            );
+            return $s;
+
+        }else{
+
+            $updateUser = Suscripcion::where('id_Pago', '=', $request['id_pago'])
+            ->update(['dias_Suscripcion' => $request['dias']]);
+
+            $s = array(
+                'error' => false,
+                'mensaje' => 'Se actualizaron lo días correctamente.'
+            );
+            return $s;
+        }
+        
     }
 
     /**

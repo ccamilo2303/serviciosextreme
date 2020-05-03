@@ -88,6 +88,28 @@ class EmailController extends Controller
         
     }
 
+    public static function codeDemo($request){
+        
+        $info = json_decode($request, true);
+
+        $subject = "Código demostración - Cinextreme";
+        $for = $info['email'];
+       
+        try {
+            Mail::send('emailCodigoDemostracion',$info, function($msj) use($subject,$for){
+                $msj->from("cinextremecol@gmail.com","Cinextreme Col");
+                $msj->subject($subject);
+                $msj->to($for);
+            });
+            return "Ok";
+        } catch (\Throwable $th) {
+            return "Error al enviar el correo";
+        }
+
+        
+        
+        
+    }
     
 
 }
