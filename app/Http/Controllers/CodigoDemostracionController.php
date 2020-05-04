@@ -31,10 +31,16 @@ class CodigoDemostracionController extends Controller
     {
         $valEmailCode =  ValidarCodigo::where('email', '=', $request['email'])
         ->select('code','email')->get();
-
+        
         if(count($valEmailCode) == 0){
+
+
+            $valEmailCodeGenerate =  ValidarCodigo::where('emailGenerado', '=', $request['email'])
+        ->select('code','email')->get();
             
-            $valEmailUser = Suscripcion::where('email', '=', $request['email'])
+            if (count($valEmailCodeGenerate) == 0) {
+
+                $valEmailUser = Suscripcion::where('email', '=', $request['email'])
             ->select('end_Subcription_Date')->get();
 
             if (count($valEmailUser) == 0) {
@@ -55,7 +61,8 @@ class CodigoDemostracionController extends Controller
 
                 ValidarCodigo::insert([
                     'email' => '',
-                    'code' => $code
+                    'code' => $code,
+                    'emailGenerado' => $request['email']
                 ]);
 
                 $infoArray = array(
@@ -76,7 +83,7 @@ class CodigoDemostracionController extends Controller
                 }else{
                     $s = array(
                         'error' => true,
-                        'mensaje' => 'Ocurrio un error al enviar el código, verifica el correo electronico porporcionado.'
+                        'mensaje' => 'Ocurrio un error al enviar el código, verifica el correo electronico proporcionado.'
                     );
                     return $s;
                 }
@@ -90,6 +97,16 @@ class CodigoDemostracionController extends Controller
                 );
                 return $s;
             }
+
+            }else{
+
+                $s = array(
+                    'error' => true,
+                    'mensaje' => 'Lo sentimos, ya se envío un código de demostración para este correo.'
+                );
+                return $s;
+            }
+            
 
         }else{
 

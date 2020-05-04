@@ -32,6 +32,7 @@ create table movies_and_genders(
 create table codes(
     code varchar(6) primary key,
     email varchar(100),
+    emailGenerado varchar(100),
     updated_at timestamp default now()
 );
 

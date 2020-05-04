@@ -1,7 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-
+Use Exception;
 use Illuminate\Http\Request;
 use Mail; //Importante incluir la clase Mail, que será la encargada del envío
 
@@ -14,12 +14,27 @@ class EmailController extends Controller
 
         $subject = "Nos contactaron!";
         $for = "cinextremecol@gmail.com";
-        Mail::send('emailFormContact',$info, function($msj) use($subject,$for){
-            $msj->from("cinextremecol@gmail.com","Cinextreme Col");
-            $msj->subject($subject);
-            $msj->to($for);
-        });
-        return 'Ok';
+        
+        try{
+            Mail::send('emailFormContact',$info, function($msj) use($subject,$for){
+                $msj->from("cinextremecol@gmail.com","Cinextreme Col");
+                $msj->subject($subject);
+                $msj->to($for);
+            });
+
+            $s = array(
+                'error' => false,
+                'mensaje' => 'Gracias por contactarnos, nos pondremos en contacto con usted dentro de poco.'
+            );
+            return $s;
+
+        }catch (Exception $e) {
+            $s = array(
+                'error' => true,
+                'mensaje' => 'Lo sentimos, no se pudo envíar la información de contacto, intentelo más tarde..'
+            );
+            return $s;
+        }
     }
 
     public static function welcome($request){
@@ -102,8 +117,8 @@ class EmailController extends Controller
                 $msj->to($for);
             });
             return "Ok";
-        } catch (\Throwable $th) {
-            return "Error al enviar el correo";
+        } catch (Exception $e) {
+            return $e->getMessage();
         }
 
         
