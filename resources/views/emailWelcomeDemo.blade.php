@@ -366,8 +366,8 @@ a.es-button {
                      <tr> 
                       <td align="left"> 
                        <ul> 
-						<li>Hola {{$nameUser}}! 
-                        Te damos la bienvenida a Cinextreme, tu cuenta está en modo prueba y estrá activa un día. Si tienes dudas o presentas problemas, no dudes en contactarnos.</li> 
+						<li>Hola! <br>
+                        Te damos la bienvenida a Cinextreme, tu cuenta está en modo prueba y estará activa un día. Si tienes dudas o presentas problemas, no dudes en contactarnos.</li> 
 					   </ul>
 					</td> 
                      </tr> 
